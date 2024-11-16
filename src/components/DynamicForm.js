@@ -27,7 +27,10 @@ const DynamicForm = () => {
         });
         setFields(result);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        alert("Error fetching fields");
+        console.error(err);
+      });
   }, []);
 
   // helper functions
@@ -39,7 +42,10 @@ const DynamicForm = () => {
         setIsModalOpen(true);
         setTemplateContent(res.data.template);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        alert("Error fetching template preview");
+        console.error(err);
+      });
   };
 
   if (loading) {
