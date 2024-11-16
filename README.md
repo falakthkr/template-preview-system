@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# DynamicForm Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+DynamicForm is a React-based application that dynamically generates a form based on data fetched from an API. Users can fill out the form, submit it, and preview a template generated based on their input.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Dynamically generates form fields based on API data.
+- Utilizes Ant Design for a clean and responsive UI.
+- Displays a preview of the submitted data in a modal.
+- Loading spinner while fetching form data.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React
+- Ant Design
+- Axios
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Prerequisites
 
-### `npm test`
+Before you begin, ensure you have the following installed:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Node.js](https://nodejs.org/) (version 16 or above)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   git clone https://github.com/your-username/template-preview-system.git
+   cd dynamic-form
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Install dependencies:
 
-### `npm run eject`
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Components
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 1. `DynamicForm`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Fetches form fields from the API.
+- Displays a loading spinner while the data is being fetched.
+- Handles form submission and sends data to the API for template preview.
 
-## Learn More
+### 2. `TemplateModal`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- A reusable modal component to display the preview content.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Approach Explanation
 
-### Code Splitting
+### Dynamic Form Generation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- The application fetches form fields from the `/api/fields` endpoint.
+- Fields are dynamically rendered using the `Form.Item` and `Input` components.
 
-### Analyzing the Bundle Size
+### Form Submission
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- The form data is collected using Ant Design's `Form` API and sent to the `/api/template-preview` endpoint using Axios.
+- A modal is displayed with the preview template returned from the API.
 
-### Making a Progressive Web App
+### Error Handling
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Network errors and API failures are detected in then-catch blocks.
+- User-friendly error messages are displayed using Ant Design's `message` component.
 
-### Advanced Configuration
+### Loading States
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- A spinner is displayed while fetching fields for a smooth user experience.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Future Improvements
 
-### `npm run build` fails to minify
+1. **Field Types:**  
+   Like checkboxes, dropdowns, and date pickers.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2. **Custom Validation Rules**
+
+3. **Field Grouping:**  
+   Functionality to group fields under specific categories for better organization.
+
+4. **Testing:**  
+   Tests for both frontend and backend.
+
+5. **Customise Template Sytling**
+
+6. **Email/SMS generation integration**

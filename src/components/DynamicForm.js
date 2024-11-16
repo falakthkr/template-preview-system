@@ -1,4 +1,4 @@
-import { Button, Form, Input, Modal, Spin } from "antd";
+import { Button, Form, Input, message, Spin } from "antd";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TemplateModal from "./TemplateModal";
@@ -12,6 +12,7 @@ const DynamicForm = () => {
 
   // hooks
   const [form] = Form.useForm();
+  const [messageApi, contextHolder] = message.useMessage();
 
   // useEffects
   useEffect(() => {
@@ -27,7 +28,13 @@ const DynamicForm = () => {
         });
         setFields(result);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        messageApi.open({
+          type: "error",
+          content: "Error fetching fields",
+        });
+        console.error(err);
+      });
   }, []);
 
   // helper functions
@@ -39,7 +46,13 @@ const DynamicForm = () => {
         setIsModalOpen(true);
         setTemplateContent(res.data.template);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        messageApi.open({
+          type: "error",
+          content: "Error fetching template preview",
+        });
+        console.error(err);
+      });
   };
 
   if (loading) {
