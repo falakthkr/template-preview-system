@@ -12,7 +12,6 @@ const DynamicForm = () => {
 
   // hooks
   const [form] = Form.useForm();
-  const [messageApi, contextHolder] = message.useMessage();
 
   // useEffects
   useEffect(() => {
@@ -29,9 +28,8 @@ const DynamicForm = () => {
         setFields(result);
       })
       .catch((err) => {
-        messageApi.open({
-          type: "error",
-          content: "Error fetching fields",
+        err.response.data.errors?.map((errorItem) => {
+          message.error(errorItem.msg);
         });
         console.error(err);
       });
@@ -47,11 +45,10 @@ const DynamicForm = () => {
         setTemplateContent(res.data.template);
       })
       .catch((err) => {
-        messageApi.open({
-          type: "error",
-          content: "Error fetching template preview",
+        err.response.data.errors?.map((errorItem) => {
+          message.error(errorItem.msg);
         });
-        console.error(err);
+        console.error(err.response.data.errors);
       });
   };
 
