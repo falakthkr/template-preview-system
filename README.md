@@ -1,6 +1,6 @@
-# DynamicForm Application
+# Template Preview System Application
 
-DynamicForm is a React-based application that dynamically generates a form based on data fetched from an API. Users can fill out the form, submit it, and preview a template generated based on their input.
+Template Preview System is a React-based application that dynamically generates a form based on data fetched from an API. Users can fill out the form, submit it, and preview a template generated based on their input.
 
 ## Features
 
